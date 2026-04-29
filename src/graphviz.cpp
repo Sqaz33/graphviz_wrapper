@@ -12,15 +12,6 @@ std::unique_ptr<graphviz::GraphViz> gv = nullptr;
 
 namespace graphviz {
 
-GraphViz* createGraphViz(
-    bool isTree, bool isDirected, const std::string& name)
-{   
-    if (!gv) {
-        gv.reset(
-            new GraphViz(isTree, isDirected, name));
-    }
-    return gv.get();
-}
 
 void GraphViz::CpDeleter::operator()(char* cp) {
     free(cp);
