@@ -1,0 +1,7 @@
+build/
+*.ali
+*.o
+main
+.vscode/
+*.class
+!java/AdaUtility*.class
