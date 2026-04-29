@@ -27,9 +27,9 @@ public:
     VertexType addVertex(const std::string& name); // auto style
     VertexType addVertex(const std::string& name, 
                          const std::vector<std::string>& desc); // auto style
-    void addEdge(VertexType v, VertexType u); // auto style
+    void addEdge(VertexType v, VertexType u, bool dashed = false); // auto style
     void addEdge(const std::string& name, 
-                 VertexType v, VertexType u); // auto style
+                 VertexType v, VertexType u, bool dashed = false); // auto style
     void nameNextEdge(const std::string& name);
 
 private:

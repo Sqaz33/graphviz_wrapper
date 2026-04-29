@@ -96,7 +96,7 @@ VertexType GraphViz::addVertex(const std::string& name) {
     return v;
 }
 
-void GraphViz::addEdge(VertexType v, VertexType u) {
+void GraphViz::addEdge(VertexType v, VertexType u, bool dashed) {
     Agedge_t* e;
     if (!(e = agedge(graph_.get(), v, u, nullptr, true))) {
         throw std::runtime_error(
@@ -113,14 +113,19 @@ void GraphViz::addEdge(VertexType v, VertexType u) {
         if (isDir_) {
             agsafeset(e, (char*)"arrowhead", (char*)"normal", (char*)"");
         }
+
+        if (dashed) {
+            agsafeset(e, (char*)"style", (char*)"dashed", (char*)"");
+        }
     }
 }
 
 void GraphViz::addEdge(const std::string& name,
-                       VertexType v, VertexType u) 
+                       VertexType v, VertexType u,
+                       bool dashed) 
 {
     nameNextEdge(name);
-    addEdge(v, u);
+    addEdge(v, u, dashed);
 }
 
 void GraphViz::nameNextEdge(const std::string& name) {
