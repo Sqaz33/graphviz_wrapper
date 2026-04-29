@@ -28,7 +28,7 @@ void GraphViz::CpDeleter::operator()(char* cp) {
 
 GraphViz::GraphViz(bool isTree, 
                    bool isDirected,
-                   const std::string& name) 
+                   const std::string& name) : isDir_(isDirected)
 {   
     auto type = isDirected ? 
                    Agstrictdirected 
@@ -117,6 +117,10 @@ void GraphViz::addEdge(VertexType v, VertexType u) {
             GraphViz::CharCp_ label(strdup("label"));
             GraphViz::CharCp_ empty(strdup(""));
             agsafeset(e, label.get(), nameCp.get(), empty.get());
+        }
+
+        if (isDir_) {
+            agsafeset(e, (char*)"arrowhead", (char*)"normal", (char*)"");
         }
     }
 }

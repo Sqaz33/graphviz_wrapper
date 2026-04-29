@@ -54,6 +54,7 @@ private:
     using CharCp_ = std::unique_ptr<char, CpDeleter>; 
     std::string edgeName_;
     int id_ = 0;
+    bool isDir_;
 };
 
 } // namespace graphviz
